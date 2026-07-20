@@ -3,15 +3,13 @@ AI hardware Benchmark
 
 Project entry point 
 """
-
-PROJECT_NAME = "AI Hardware Benchmark"
-VERSION = "0.1.0"
+from core.config import Config
 
 def print_banner():
     """Display Project Information."""
     print("=" * 50)
-    print(f"{PROJECT_NAME}")
-    print(f"Version: {VERSION}")
+    print(Config.PROJECT_NAME)
+    print(f"Version: {Config.VERSION}")
     print("=" * 50)
 
 def main():
