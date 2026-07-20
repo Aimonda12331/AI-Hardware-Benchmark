@@ -56,8 +56,8 @@ Merge vào main
 
 | Giai đoạn | Branch | Trạng thái |
 |-----------|--------|:---------:|
-| Project Foundation | `feature/project-foundation` | 🔄 |
-| System Information | `feature/system-info` | ⬜ |
+| Project Foundation | `feature/project-foundation` | ✅ |
+| System Information | `feature/system-info` | 🔄 |
 | CPU Benchmark | `feature/cpu-benchmark` | ⬜ |
 | Memory Benchmark | `feature/memory-benchmark` | ⬜ |
 | Storage Benchmark | `feature/storage-benchmark` | ⬜ |

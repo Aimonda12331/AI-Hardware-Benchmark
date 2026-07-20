@@ -10,6 +10,11 @@ Dự án được chia thành nhiều giai đoạn (Phase), mỗi giai đoạn t
 
 ## Các giai đoạn phát triển
 
+## Ghi chú
+* [x] Hoàn thành
+* [/] Đang thực hiện
+* [ ] Chưa thực thiện
+
 ### Phase 1 - Nền tảng dự án (Project Foundation)
 
 Thiết lập cấu trúc dự án và môi trường phát triển.
@@ -18,11 +23,11 @@ Thiết lập cấu trúc dự án và môi trường phát triển.
 * [x] README.md
 * [x] requirements.txt
 * [x] .gitignore
-* [ ] Hệ thống Logging
+* [x] Tệp cấu hình chung (config.py)
+* [x] Điểm khởi chạy chương trình (main.py)
+* [/] Hệ thống Logging
 * [ ] Hệ thống Reporting
-* [ ] Tệp cấu hình chung (config.py)
 * [ ] Hệ thống quản lý benchmark (Benchmark Framework)
-* [ ] Điểm khởi chạy chương trình (main.py)
 * [ ] Kiểm tra môi trường phát triển
 
 ---
