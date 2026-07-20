@@ -1,251 +1,128 @@
 # AI Hardware Benchmark Suite
 
-Bộ công cụ benchmark dành cho máy tính AI, Deep Learning và Embedded Linux.
+AI Hardware Benchmark Suite là bộ công cụ benchmark mã nguồn mở được phát triển bằng Python nhằm đánh giá hiệu năng của toàn bộ hệ thống phần cứng phục vụ các tác vụ Trí tuệ nhân tạo (AI), Machine Learning (ML) và Deep Learning (DL).
 
-Hỗ trợ đánh giá hiệu năng:
-
-- GPU
-- CPU
-- RAM
-- SSD
-- CUDA
-- PyTorch
-- Linux Environment
+Dự án cung cấp các bài benchmark cho CPU, GPU, bộ nhớ, thiết bị lưu trữ và các tác vụ AI thực tế, đồng thời tạo báo cáo giúp phân tích và so sánh hiệu năng giữa các hệ thống.
 
 ---
 
-# Cấu trúc dự án
+## Tính năng
+
+* Benchmark CPU
+* Benchmark GPU
+* Benchmark Memory
+* Benchmark Storage
+* Benchmark AI
+* Thu thập thông tin hệ thống
+* Logging quá trình thực thi
+* Sinh báo cáo kết quả
+* Kiến trúc module dễ mở rộng
+
+---
+
+## Cấu trúc dự án
 
 ```text
 AI-Hardware-Benchmark/
 │
 ├── benchmark/
-│   ├── gpu_stress_test.py
-│   ├── gpu_benchmark.py
-│   ├── cpu_benchmark.py
-│   └── ram_benchmark.py
-│
+├── core/               # Thành phần dùng chung
+│   ├── __init__.py
+│   ├── config.py
+│   ├── logger.py
+│   └── benchmark.py
 ├── scripts/
-│   ├── run_gpu_test.sh
-│   ├── monitor_gpu.sh
-│   ├── benchmark_gpu.sh
-│   ├── benchmark_cpu.sh
-│   ├── benchmark_ram.sh
-│   ├── benchmark_disk.sh
-│   ├── system_info.sh
-│   ├── run_all.sh
-│   └── install_tools.sh
-│
 ├── reports/
 ├── logs/
+├── docs/
+│
+├── README.md
 ├── requirements.txt
-└── README.md
+└── LICENSE
 ```
 
 ---
 
-# Chức năng
+## Yêu cầu
 
-| Thành phần | Mục đích |
-|------------|----------|
-| **GPU Stress Test** | Stress GPU, kiểm tra VRAM, CUDA và độ ổn định |
-| **GPU Benchmark** | Benchmark FP32, FP16, Tensor Core, GFLOPS/TFLOPS |
-| **CPU Benchmark** | Đánh giá hiệu năng CPU đơn luồng và đa luồng |
-| **RAM Benchmark** | Kiểm tra tốc độ đọc, ghi, sao chép và băng thông RAM |
-| **Disk Benchmark** | Đo tốc độ SSD (Sequential, Random, IOPS) bằng `fio` |
-| **System Info** | Thu thập thông tin phần cứng và môi trường |
-| **Run All** | Chạy toàn bộ benchmark và xuất báo cáo |
+* Python 3.10 trở lên
+* Linux (khuyến nghị Ubuntu)
+* NVIDIA Driver (đối với GPU NVIDIA)
+* CUDA Toolkit (nếu sử dụng GPU Benchmark)
+* Các thư viện trong `requirements.txt`
 
 ---
 
-# Kết quả
-
-## Reports
-
-```
-reports/
-├── system_info.txt
-├── gpu_result.txt
-├── cpu_result.txt
-├── ram_result.txt
-├── disk_result.txt
-└── summary.txt
-```
-
-## Logs
-
-```
-logs/
-```
-
----
-
-# Yêu cầu
-
-- Ubuntu 22.04+
-- Python 3.10+
-- CUDA Toolkit
-- NVIDIA Driver
-- PyTorch (CUDA)
-
----
-
-# Cài đặt
-
-Tạo môi trường:
+## Cài đặt
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-Cài thư viện:
-```bash
+git clone https://github.com/<your-account>/AI-Hardware-Benchmark.git
+
+cd AI-Hardware-Benchmark
+
 pip install -r requirements.txt
 ```
-Cài công cụ benchmark:
+
+---
+
+## Cách sử dụng
+
+Ví dụ chạy toàn bộ benchmark:
+
 ```bash
-chmod +x scripts/install_tools.sh
-./scripts/install_tools.sh
+python main.py
+```
+
+Hoặc chạy từng module riêng:
+
+```bash
+python benchmark/cpu.py
+python benchmark/memory.py
+python benchmark/storage.py
+python benchmark/gpu.py
+python benchmark/ai.py
+```
+
+> Các lệnh trên là ví dụ và sẽ được cập nhật khi dự án hoàn thiện.
+
+---
+
+## Tài liệu
+
+Tài liệu thiết kế được lưu trong thư mục `docs/`.
+
+| Tài liệu             | Mô tả                       |
+| -------------------- | --------------------------- |
+| roadmap.md           | Lộ trình phát triển dự án   |
+| architecture.md      | Kiến trúc tổng thể          |
+| logging.md           | Thiết kế hệ thống Logging   |
+| reporting.md         | Thiết kế hệ thống Reporting |
+| cpu_benchmark.md     | Thiết kế CPU Benchmark      |
+| memory_benchmark.md  | Thiết kế Memory Benchmark   |
+| storage_benchmark.md | Thiết kế Storage Benchmark  |
+| gpu_benchmark.md     | Thiết kế GPU Benchmark      |
+| ai_benchmark.md      | Thiết kế AI Benchmark       |
+
+---
+
+## Lộ trình
+
+Các giai đoạn phát triển được mô tả chi tiết trong:
+
+```text
+docs/roadmap.md
 ```
 
 ---
 
-# Sử dụng
+## Đóng góp
 
-Benchmark GPU
+Mọi đóng góp nhằm cải thiện dự án đều được hoan nghênh.
 
-```bash
-./scripts/benchmark_gpu.sh
-```
-
-Benchmark CPU
-
-```bash
-./scripts/benchmark_cpu.sh
-```
-
-Benchmark RAM
-
-```bash
-./scripts/benchmark_ram.sh
-```
-
-Benchmark SSD
-
-```bash
-./scripts/benchmark_disk.sh
-```
-
-Thông tin hệ thống
-
-```bash
-./scripts/system_info.sh
-```
-
-Chạy toàn bộ
-
-```bash
-./scripts/run_all.sh
-```
+Nếu phát hiện lỗi hoặc có đề xuất mới, vui lòng tạo Issue hoặc Pull Request.
 
 ---
 
-# Roadmap
+## Giấy phép
 
-## Phase 1 - Project Foundation
-
-- [ ] Project structure
-- [ ] README.md
-- [ ] requirements.txt
-- [ ] .gitignore
-- [ ] Logging system
-- [ ] Report directory
-
----
-
-## Phase 2 - System Information
-
-- [ ] System Information
-- [ ] CPU Information
-- [ ] GPU Information
-- [ ] RAM Information
-- [ ] Storage Information
-- [ ] CUDA Information
-- [ ] PyTorch Environment
-
----
-
-## Phase 3 - GPU Benchmark
-
-- [ ] GPU Detection
-- [ ] GPU Stress Test
-- [ ] VRAM Stress Test
-- [ ] FP32 Benchmark
-- [ ] FP16 Benchmark
-- [ ] Tensor Core Benchmark
-- [ ] CUDA Benchmark
-
----
-
-## Phase 4 - CPU Benchmark
-
-- [ ] CPU Stress Test
-- [ ] Single-thread Benchmark
-- [ ] Multi-thread Benchmark
-- [ ] Matrix Multiplication Benchmark
-
----
-
-## Phase 5 - Memory Benchmark
-
-- [ ] RAM Read Benchmark
-- [ ] RAM Write Benchmark
-- [ ] RAM Copy Benchmark
-- [ ] Memory Bandwidth Benchmark
-
----
-
-## Phase 6 - Storage Benchmark
-
-- [ ] Sequential Read
-- [ ] Sequential Write
-- [ ] Random Read
-- [ ] Random Write
-- [ ] IOPS Benchmark
-
----
-
-## Phase 7 - AI Benchmark
-
-- [ ] AI Training Benchmark
-- [ ] AI Inference Benchmark
-- [ ] CNN Benchmark
-- [ ] Batch Size Benchmark
-- [ ] Mixed Precision (AMP) Benchmark
-
----
-
-## Phase 8 - Reporting
-
-- [ ] TXT Report
-- [ ] JSON Report
-- [ ] CSV Report
-- [ ] Benchmark Summary
-- [ ] Hardware Summary
-
----
-
-## Phase 9 - Advanced Features
-
-- [ ] Multi-GPU Benchmark
-- [ ] Temperature Monitoring
-- [ ] Power Consumption Monitoring
-- [ ] Benchmark History
-- [ ] Command Line Arguments
-- [ ] Configuration File
-
----
-
-# License
-
-MIT License
+Dự án được phát hành theo giấy phép MIT License.
