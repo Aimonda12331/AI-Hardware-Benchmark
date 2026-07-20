@@ -1,0 +1,187 @@
+Đây là file khai báo các thư viện Python mà dự án cần. Bất kỳ ai clone dự án chỉ cần chạy:
+```bash
+pip install -r requirements.txt
+```
+là có thể cài đặt đầy đủ môi trường.
+
+---
+
+# Bước 1. Xác định thư viện cần dùng
+Dựa trên roadmap hiện tại, ta cần:
+| Thư viện    | Mục đích                        |
+| ----------- | ------------------------------- |
+| torch       | Benchmark GPU, CPU, CUDA        |
+| torchvision | AI Training Benchmark           |
+| numpy       | Xử lý mảng, tính toán           |
+| psutil      | Theo dõi CPU, RAM, tiến trình   |
+| pandas      | Xuất báo cáo CSV                |
+| matplotlib  | Vẽ biểu đồ benchmark            |
+| tabulate    | Hiển thị bảng đẹp trên terminal |
+
+> **Lưu ý:** `fio`, `nvidia-smi`, `lscpu`, `lsblk` là công cụ của hệ điều hành, **không** đưa vào `requirements.txt`.
+---
+
+# Bước 2. Nội dung `requirements.txt`
+```text
+torch
+torchvision
+numpy
+psutil
+pandas
+matplotlib
+tabulate
+```
+
+---
+
+# Bước 3. Giải thích từng thư viện
+
+### 1. torch
+
+Là thư viện quan trọng nhất. Dùng cho:
+* GPU Stress Test
+* GPU Benchmark
+* CPU Benchmark
+* CUDA Benchmark
+* AI Training
+* AI Inference
+
+Ví dụ:
+```python
+import torch
+```
+
+---
+
+### 2. torchvision
+
+Dùng cho:
+* Dataset
+* Image Transform
+* Model có sẵn (ResNet, MobileNet,...)
+
+Ví dụ:
+
+```python
+from torchvision import models
+```
+
+---
+
+### 3. numpy
+
+Dùng cho:
+
+* Ma trận
+* Vector
+* Sinh dữ liệu benchmark
+
+Ví dụ:
+
+```python
+import numpy as np
+```
+
+---
+
+### 4. psutil
+
+Đọc thông tin hệ thống.Ví dụ:
+
+```python
+import psutil
+
+psutil.cpu_percent()
+psutil.virtual_memory()
+```
+
+---
+
+### 5. pandas
+
+Xuất báo cáo.Ví dụ:
+ 
+```python
+import pandas as pd
+
+df.to_csv(...)
+```
+
+---
+
+### 6. matplotlib
+
+Vẽ biểu đồ. Ví dụ:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Sau này có thể vẽ:
+
+GPU Utilization
+
+100%
+ 90%
+ 80%
+ ...
+```
+
+---
+
+### 7. tabulate
+
+Hiển thị bảng đẹp trên terminal. Ví dụ:
+
++-----------+---------+
+| GPU       | RTX3060 |
++-----------+---------+
+| TFLOPS    | 12.7    |
++-----------+---------+
+
+---
+# Cài đặt
+
+Sau khi tạo `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+
+
+## Có nên ghi phiên bản trong `requirements.txt`?
+
+==============================================================
+Có nên ghi phiên bản trong requirements.txt?
+==============================================================
+
+Có hai cách quản lý dependency phổ biến:
+
++----------------------+-------------------------+--------------------------+
+| Không khóa phiên bản | Khóa phiên bản          |
++----------------------+-------------------------+--------------------------+
+| Ví dụ                | torch                   | torch==2.8.0             |
+|                      | numpy                   | numpy==2.3.2             |
++----------------------+-------------------------+--------------------------+
+| Khi sử dụng          | Giai đoạn phát triển    | Phát hành hoặc làm việc  |
+|                      |                         | theo nhóm                |
++----------------------+-------------------------+--------------------------+
+| Ưu điểm              | - Luôn cài phiên bản    | - Đảm bảo mọi môi trường |
+|                      |   mới nhất tương thích  |   sử dụng cùng phiên bản |
+|                      | - Dễ cập nhật           | - Dễ tái lập môi trường  |
+|                      | - Dễ bảo trì            | - Kết quả ổn định        |
++----------------------+-------------------------+--------------------------+
+| Nhược điểm           | - Có thể khác nhau giữa | - Phải cập nhật thủ công |
+|                      |   các môi trường        |   khi nâng cấp thư viện  |
++----------------------+-------------------------+--------------------------+
+
+Khuyến nghị
+
+Trong quá trình phát triển:
+    -> Không khóa phiên bản.
+
+Khi phát hành hoặc chia sẻ dự án:
+    -> Khóa phiên bản để đảm bảo mọi người sử dụng cùng một môi trường.

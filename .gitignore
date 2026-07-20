@@ -1,0 +1,56 @@
+# =====================================
+# Python: Không lưu các file bytecode do Python sinh ra
+# =====================================
+__pycache__/
+*.py[cod]
+*.so
+
+# =====================================
+# Virtual Environment: Không đưa môi trường Python lên git
+# Môi trường nặng theo GB và có thể tạo lại bằng pip install -r requirements.txt
+# =====================================
+.venv/
+venv/
+env/
+
+# =====================================
+# Python Cache: Các thư mục cache được tạo ra trong quá trình phát triển
+# =====================================
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# =====================================
+# Jupyter Notebook
+# =====================================
+.ipynb_checkpoints/
+
+# =====================================
+# IDE: Không lưu cấu hình riêng của VS code hoặc Lion/PyCharm
+# =====================================
+.vscode/
+.idea/
+
+# =====================================
+# Logs: Các file log được sinh ra sau mỗi lần benchmark
+# =====================================
+logs/
+*.log
+
+# =====================================
+# Reports: Kết quả bench mark thường không Commit lên git vì dễ thay đổi, phụ thuộc phần cứng và tạo lại đc
+# =====================================
+reports/
+
+# =====================================
+# Operating System: Các file do macOS và Windows tự tạo.
+# =====================================
+.DS_Store
+Thumbs.db
+
+# =====================================
+# Build: Dùng khi đóng gói hoặc phát hành package Python.
+# =====================================
+build/
+dist/
+*.egg-info/
